@@ -2,7 +2,7 @@
 using sabs_app_api.Models;
 using System.Collections.Generic;
 
-namespace sabs_app_api.Controllers
+namespace sabs_app_api.DTOs
 {
     public class CreateUser : IRequest<User>
     {

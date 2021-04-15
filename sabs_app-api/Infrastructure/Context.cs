@@ -12,6 +12,8 @@ namespace sabs_app_api.Infrastructure
     {
         public DbSet<User> Users    { get; set; }
 
+        public DbSet<IPAdress> IPs { get; set; }
+
         public Context(DbContextOptions<Context> options) : base(options)
         {
             Database.EnsureCreated();
@@ -32,8 +34,7 @@ namespace sabs_app_api.Infrastructure
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-    
+          
         }
 
     }

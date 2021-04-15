@@ -2,7 +2,7 @@
 using sabs_app_api.Models;
 using System;
 
-namespace sabs_app_api.Controllers
+namespace sabs_app_api.DTOs
 {
     public class GetUserById : IRequest<User>
     {

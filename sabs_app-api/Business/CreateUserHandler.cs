@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using sabs_app_api.Controllers;
+using sabs_app_api.DTOs;
 using sabs_app_api.Infrastructure;
 using sabs_app_api.Models;
 using System.Linq;

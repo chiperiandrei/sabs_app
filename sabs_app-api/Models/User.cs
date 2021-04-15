@@ -7,7 +7,7 @@ namespace sabs_app_api.Models
 {
     public class User
     {
-        public Guid UserId { get; set; }
+        public Guid ID { get; set; }
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -15,23 +15,24 @@ namespace sabs_app_api.Models
 
         public string Password { get; set; }
 
-        public string IPs { get; set; }
+        public IList<IPAdress> IPs { get; set; }
 
         public User()
         {
-            UserId = Guid.NewGuid();
+            ID = Guid.NewGuid();
         }
 
         public static User Create(string firstname, string lastname, string email, string password)
         {
             return new User
             {
-                UserId = Guid.NewGuid(),
+                ID = Guid.NewGuid(),
                 FirstName = firstname,
                 LastName = lastname,
                 Email = email,
                 Password = password
             };
         }
+
     }
 }
