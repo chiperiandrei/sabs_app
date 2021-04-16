@@ -44,6 +44,14 @@
               "target": "Package",
               "version": "[4.0.2, )"
             },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[10.0.3, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[10.0.3, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[9.0.0, )"
@@ -71,6 +79,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

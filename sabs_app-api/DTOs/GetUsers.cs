@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace sabs_app_api.DTOs
 {
-    public class GetUsers : IRequest<List<User>>
+    public class GetUsers : IRequest<List<UserDTO>>
     {
 
     }

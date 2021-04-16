@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "qBDmim8dWyr7npvqZuv8AL8j6yG3qvCN63Em1t0lqDJ1VzYHUYfS623DPKbk1aqUch1nKo707GrSDcsPZIVTvw==",
+  "dgSpecHash": "wcbl5UJovCUJLAsAgQTXo1VVInev4hoYsDjYBVxgADxQnYP4P7jBrvxzenhdRjonUL4gRCzQSYwzyW2Q9WfNZg==",
   "success": true,
   "projectFilePath": "D:\\____________personal\\sabs_app\\sabs_app-api\\sabs_app-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andre\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\fluentvalidation\\10.0.3\\fluentvalidation.10.0.3.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.0.3\\fluentvalidation.aspnetcore.10.0.3.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\10.0.3\\fluentvalidation.dependencyinjectionextensions.10.0.3.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",

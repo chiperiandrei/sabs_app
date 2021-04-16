@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,8 +31,12 @@ namespace sabs_app_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
-            services.AddControllers();
+                        options.UseSqlServer(Configuration.GetConnectionString("Sabs_App_API")));
+            services.AddControllers().AddFluentValidation(fv=> {
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                fv.RegisterValidatorsFromAssemblyContaining<Startup>();
+            }
+                );
             services.AddCors(options =>
             {
                 options.AddPolicy(MyAllowSpecificOrigins,
@@ -44,6 +49,7 @@ namespace sabs_app_api
                     });
             });
             services.AddMediatR(typeof(Startup).Assembly);
+            
 
         }
 

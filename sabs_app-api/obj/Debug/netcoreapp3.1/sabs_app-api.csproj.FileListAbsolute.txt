@@ -64,3 +64,7 @@ D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\runtimes\w
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\____________personal\sabs_app\sabs_app-api\obj\Debug\netcoreapp3.1\sabs_app-api.MvcApplicationPartsAssemblyInfo.cs
+D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll

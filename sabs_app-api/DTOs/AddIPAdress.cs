@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace sabs_app_api.DTOs
 {
-    public class AddIPAdress: IRequest<User>
+    public class AddIPAdress: IRequest<IPAdress>
     {
-        public Guid UserId { get; set; }
+        public string Email{ get; set; }
 
         public string IPAdress { get; set; }
     }

@@ -13,19 +13,25 @@ namespace sabs_app_api.Business
 {
 
 
-    public class AddIPAdressHandler : IRequestHandler<AddIPAdress, User>
+    public class AddIPAdressHandler : IRequestHandler<AddIPAdress, IPAdress>
     {
         private readonly Context _context;
         public AddIPAdressHandler(Context context)
         {
             _context = context;
         }
-        public async Task<User> Handle(AddIPAdress request, CancellationToken cancellationToken)
+        public async Task<IPAdress> Handle(AddIPAdress request, CancellationToken cancellationToken)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.ID == request.UserId);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Email== request.Email);
             var new_ip = IPAdress.Create(user, request.IPAdress);
-            _context.IPs.Add(new_ip);
-            await _context.SaveChangesAsync();
+            var uniq_ip_per_user =  _context.IPs.Where(s=>s.UserID==user.ID).Where(s=>s.IPValue==request.IPAdress).ToList();
+            if (uniq_ip_per_user.Count==0)
+            {
+                _context.IPs.Add(new_ip);
+                await _context.SaveChangesAsync();
+                return new_ip;
+            }
+           
             return null;
 
         }

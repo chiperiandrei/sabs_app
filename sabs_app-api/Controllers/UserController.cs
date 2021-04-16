@@ -22,7 +22,7 @@ namespace sabs_app_api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetUsers()
+        public async Task<ActionResult<List<UserDTO>>> GetUsers()
         {
             var users = await _mediator.Send(new GetUsers());
             if (users == null)
@@ -32,11 +32,16 @@ namespace sabs_app_api.Controllers
             return Ok(users);
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult<User>> Create([FromBody] CreateUser request)
         {
             var user = await _mediator.Send(request);
-            return user;
+            if (user != null)
+                return user;
+            else
+                return BadRequest(
+                "Email already exists"
+            );
         }
 
 
@@ -46,7 +51,7 @@ namespace sabs_app_api.Controllers
             var user = await _mediator.Send(new GetUserById(id));
             if (user == null)
             {
-                return NotFound();
+                return BadRequest("User not found");
             }
             return Ok(user);
         }
@@ -58,12 +63,19 @@ namespace sabs_app_api.Controllers
             await _mediator.Send(new DeleteUser(id));
             return NoContent();
         }
-        [HttpPost("addip")]
-        public async Task<ActionResult<User>> AddIp([FromBody] AddIPAdress request)
+
+        [HttpPost("login")]
+        public async Task<ActionResult<UserDTO>> Login([FromBody] LoginUser request)
         {
-            var res = await _mediator.Send(request);
-            return NoContent();
+            var loginObj = await _mediator.Send(request);
+            if (loginObj == null)
+            {
+                return BadRequest("wrong email or password") ;
+            }
+
+            return new ObjectResult(loginObj);
         }
+
 
     }
 }
