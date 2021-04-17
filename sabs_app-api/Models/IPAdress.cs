@@ -34,8 +34,6 @@ namespace sabs_app_api.Models
                 IPValue = ipadress,
                 CreatedDate = DateTime.UtcNow,
                 ModifiedDate = DateTime.UtcNow
-
-
             };
         }
 

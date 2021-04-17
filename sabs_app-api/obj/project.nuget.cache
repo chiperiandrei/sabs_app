@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wcbl5UJovCUJLAsAgQTXo1VVInev4hoYsDjYBVxgADxQnYP4P7jBrvxzenhdRjonUL4gRCzQSYwzyW2Q9WfNZg==",
+  "dgSpecHash": "+yBOfyNIGouLB1yyD+1AIc8wC6UQVLT6JKPr2fSBb65nYiIn3uhC05qDGsHyp/E0t5lNbb8oMmC2Oqb2TWCozw==",
   "success": true,
   "projectFilePath": "D:\\____________personal\\sabs_app\\sabs_app-api\\sabs_app-api.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\andre\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.14\\microsoft.aspnetcore.authentication.jwtbearer.3.1.14.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

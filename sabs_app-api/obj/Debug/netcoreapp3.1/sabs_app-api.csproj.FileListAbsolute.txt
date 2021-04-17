@@ -68,3 +68,4 @@ D:\____________personal\sabs_app\sabs_app-api\obj\Debug\netcoreapp3.1\sabs_app-a
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.dll
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
 D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll
+D:\____________personal\sabs_app\sabs_app-api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

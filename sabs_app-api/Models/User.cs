@@ -16,6 +16,7 @@ namespace sabs_app_api.Models
         public string Phone { get; set; }
 
         public string Password { get; set; }
+        public string Role { get; set; }
 
         public IList<IPAdress> IPs { get; set; }
 
@@ -33,7 +34,8 @@ namespace sabs_app_api.Models
                 LastName = lastname,
                 Email = email,
                 Password = password,
-                Phone = phone
+                Phone = phone,
+                Role = "Admin"
             };
         }
 

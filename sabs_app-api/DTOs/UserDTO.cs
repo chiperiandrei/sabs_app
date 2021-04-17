@@ -27,8 +27,7 @@ namespace sabs_app_api.DTOs
 
         public string Phone { get; set; }
 
-
-
+        public string Role { get; set; }
 
         public IList<IPAdress> IPs { get; set; }
     }

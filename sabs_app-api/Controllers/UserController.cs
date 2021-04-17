@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using sabs_app_api.DTOs;
 using sabs_app_api.Models;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace sabs_app_api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -21,6 +23,7 @@ namespace sabs_app_api.Controllers
             _mediator = mediator;
         }
 
+        [Authorize(Roles = Role.Admin)]
         [HttpGet]
         public async Task<ActionResult<List<UserDTO>>> GetUsers()
         {
@@ -32,6 +35,7 @@ namespace sabs_app_api.Controllers
             return Ok(users);
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<User>> Create([FromBody] CreateUser request)
         {
@@ -64,8 +68,9 @@ namespace sabs_app_api.Controllers
             return NoContent();
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<ActionResult<UserDTO>> Login([FromBody] LoginUser request)
+        public async Task<ActionResult<ResponseLogin>> Login([FromBody] LoginUser request)
         {
             var loginObj = await _mediator.Send(request);
             if (loginObj == null)
