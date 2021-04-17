@@ -3,6 +3,7 @@ using sabs_app_api.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace sabs_app_api.Validators
@@ -26,7 +27,21 @@ namespace sabs_app_api.Validators
                 .WithMessage("Email should not be empty")
                 .EmailAddress()
                 .WithMessage("Insert a valid email address");
+            RuleFor(x => x.Phone).NotEmpty()
+                .WithMessage("Password should not be empty")
+                .Length(10)
+                .WithMessage("Password should haave 10 characters")
+            
+                .Must(BeAValidPhoneNumber)
+                .WithMessage("Password should haave 10 numbers");
 
+
+        }
+        protected bool BeAValidPhoneNumber(string input)
+        {
+            Regex ip = new Regex(@"\b\d{10}\b");
+            MatchCollection result = ip.Matches(input);
+            return result.Count > 0;
         }
     }
 }

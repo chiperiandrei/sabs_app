@@ -17,7 +17,7 @@ export default function Header() {
     //login goes here
 
     if (email && password) {
-      dispatch(logInUser({ email, password, token: "asda" }));
+      dispatch(logInUser({ email, password, token: "asda",firstname:"ADMIN FAKE" }));
     }
   };
   const handleLogOut = (e) => {
@@ -89,7 +89,7 @@ export default function Header() {
                 className="nav-item nav-link dropdown-toggle user-action"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "chiperi.png"}
+                  src={process.env.PUBLIC_URL + "logo192.png"}
                   className="avatar"
                   alt="Avatar"
                 />
@@ -121,7 +121,7 @@ export default function Header() {
                 className="nav-item nav-link dropdown-toggle user-action"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "default.svg"}
+                  src={process.env.PUBLIC_URL + "logo192.png"}
                   className="avatar"
                   alt="Avatar"
                 />

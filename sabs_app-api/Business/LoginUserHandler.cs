@@ -26,7 +26,7 @@ namespace sabs_app_api.Business
             if (actualUser != null)
                 if (BCrypt.Net.BCrypt.Verify(request.Password,actualUser.Password))
                 {
-                    UserDTO loginObj = new UserDTO(actualUser.ID,actualUser.FirstName, actualUser.FirstName, actualUser.Email,actualUser.IPs);
+                    UserDTO loginObj = new UserDTO(actualUser.ID,actualUser.FirstName, actualUser.FirstName, actualUser.Email,actualUser.IPs,actualUser.Phone);
                     return loginObj;
                 }
             return null;

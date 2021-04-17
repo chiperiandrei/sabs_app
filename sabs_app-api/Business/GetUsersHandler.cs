@@ -20,7 +20,7 @@ namespace sabs_app_api.Business
         }
         public async Task<List<UserDTO>> Handle(GetUsers request, CancellationToken cancellationToken)
         {
-            var users = await _context.Users.Select(p => new UserDTO(p.ID, p.FirstName, p.LastName, p.Email, p.IPs)).ToListAsync();
+            var users = await _context.Users.Select(p => new UserDTO(p.ID, p.FirstName, p.LastName, p.Email, p.IPs,p.Phone)).ToListAsync();
             return users;
         }
 

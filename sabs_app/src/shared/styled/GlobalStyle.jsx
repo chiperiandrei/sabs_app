@@ -25,9 +25,3 @@ export const WelcomeMessage = styled.span`
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 `;
-export const CarsAvalaible = styled.div`
-  display: flex;
-  margin-top: 2em;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
