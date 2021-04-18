@@ -1,29 +1,29 @@
-import { FormControl, Grid, TextField } from "@material-ui/core";
+import { Grid, TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import EmailIcon from "@material-ui/icons/Email";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import PhoneIcon from "@material-ui/icons/Phone";
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { Col, Container, Row } from "reactstrap";
 
 export default function SectionFirstPage() {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    criteriaMode: "all",
+  });
 
-  const [firstnameError, setFirstnameError] = useState("");
-  const [lastnameError, setLastnameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [phoneNumberError, setPhoneNumberError] = useState("");
-  const [repeatPasswordError, setRepeatPasswordError] = useState("");
+  console.log(errors);
 
-  const handleRegister = () => {};
+  const onSubmit = (formData) => {
+    console.log(formData);
+    console.log(errors);
+  };
   return (
     <section className="s2">
       <Container>
@@ -32,50 +32,93 @@ export default function SectionFirstPage() {
             <h1>
               <span className="bold">Join US</span>
             </h1>
-            <FormControl margin="normal">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={2} direction="column">
                 <Grid item justify="space-between">
                   <AccountCircle />
                   <TextField
+                    name="firstname"
+                    type="text"
                     label="Firstname"
-                    onChange={(e) => setFirstname(e.target.value)}
+                    {...register("firstname", {
+                      required: "Firstname is required",
+                    })}
+                    error={errors.firstname ? true : false}
+                    helperText={
+                      errors.firstname ? errors.firstname.message : null
+                    }
                   />
                 </Grid>
                 <Grid item>
                   <AccountCircle />
                   <TextField
+                    name="lastname"
+                    type="text"
                     label="Lastname"
-                    onChange={(e) => setLastname(e.target.value)}
+                    {...register("lastname", {
+                      required: "Lastname is required",
+                    })}
+                    error={errors.lastname ? true : false}
+                    helperText={
+                      errors.lastname ? errors.lastname.message : null
+                    }
                   />
                 </Grid>
                 <Grid item>
                   <PhoneIcon />
                   <TextField
+                    name="phone"
+                    type="text"
+                    {...register("phone", {
+                      pattern: {
+                        value: /[0-9]{10}$/,
+                        message: "Phone should be format from 10 numbers", // JS only: <p>error message</p> TS only support string
+                      },
+                    })}
                     label="Phone number"
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    error={errors.phone ? true : false}
+                    helperText={errors.phone ? errors.phone.message : null}
                   />
                 </Grid>
                 <Grid item>
                   <EmailIcon />
                   <TextField
-                    required={true}
+                    name="email"
                     type="email"
+                    {...register("email", {
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/,
+                        message: "invalid email address", // JS only: <p>error message</p> TS only support string
+                      },
+                    })}
                     label="Email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    error={errors.email ? true : false}
+                    helperText={errors.email ? errors.email.message : null}
                   />
                 </Grid>
                 <Grid item>
                   <LockOpenIcon />
                   <TextField
+                    name="password"
+                    type="password"
+                    {...register("password", {
+                      minLength: 6,
+                      message: "Minimum 6 characters",
+                    })}
                     label="Password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    error={errors.password ? true : false}
+                    helperText={
+                      errors.password ? errors.password.message : null
+                    }
                   />
                 </Grid>
                 <Grid item>
                   <LockOpenIcon />
                   <TextField
+                    name="retype_password"
+                    type="password"
+                    {...register("retype_password")}
                     label="Repeat password"
-                    onChange={(e) => setRepeatPassword(e.target.value)}
                   />
                 </Grid>
               </Grid>
@@ -83,11 +126,12 @@ export default function SectionFirstPage() {
                 variant="contained"
                 color="primary"
                 endIcon={<Icon>send</Icon>}
-                onClick={handleRegister}
+                style={{ marginTop: 20 }}
+                type="submit"
               >
                 Send
               </Button>
-            </FormControl>
+            </form>
           </Col>
         </Row>
       </Container>
