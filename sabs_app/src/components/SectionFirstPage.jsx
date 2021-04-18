@@ -5,8 +5,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import EmailIcon from "@material-ui/icons/Email";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import PhoneIcon from "@material-ui/icons/Phone";
-import React from "react";
+import axios from "axios";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+//notifications
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Col, Container, Row } from "reactstrap";
 
 export default function SectionFirstPage() {
@@ -14,15 +18,26 @@ export default function SectionFirstPage() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    reset,
   } = useForm({
     criteriaMode: "all",
   });
 
   console.log(errors);
+  const password = useRef({});
+  password.current = watch("password", "");
 
-  const onSubmit = (formData) => {
-    console.log(formData);
-    console.log(errors);
+  const onSubmit = ({ email, password, firstname, lastname, phone }, e) => {
+    const register_data = { email, password, firstname, lastname, phone };
+    console.log(register_data);
+    axios
+      .post("https://localhost:5001/api/user/register", register_data)
+      .then((res) => {
+        toast.success("Account successfully created!");
+        e.target.reset();
+      })
+      .catch((err) => toast.error(err.message));
   };
   return (
     <section className="s2">
@@ -34,7 +49,7 @@ export default function SectionFirstPage() {
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={2} direction="column">
-                <Grid item justify="space-between">
+                <Grid item>
                   <AccountCircle />
                   <TextField
                     name="firstname"
@@ -87,8 +102,8 @@ export default function SectionFirstPage() {
                     type="email"
                     {...register("email", {
                       pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/,
-                        message: "invalid email address", // JS only: <p>error message</p> TS only support string
+                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+                        message: "invalid email adress",
                       },
                     })}
                     label="Email"
@@ -102,8 +117,11 @@ export default function SectionFirstPage() {
                     name="password"
                     type="password"
                     {...register("password", {
-                      minLength: 6,
-                      message: "Minimum 6 characters",
+                      required: "You must specify a password",
+                      minLength: {
+                        value: 8,
+                        message: "Password must have at least 8 characters",
+                      },
                     })}
                     label="Password"
                     error={errors.password ? true : false}
@@ -117,8 +135,18 @@ export default function SectionFirstPage() {
                   <TextField
                     name="retype_password"
                     type="password"
-                    {...register("retype_password")}
+                    {...register("retype_password", {
+                      validate: (value) =>
+                        value === password.current ||
+                        "The passwords do not match",
+                    })}
                     label="Repeat password"
+                    error={errors.retype_password ? true : false}
+                    helperText={
+                      errors.retype_password
+                        ? errors.retype_password.message
+                        : null
+                    }
                   />
                 </Grid>
               </Grid>
@@ -134,6 +162,7 @@ export default function SectionFirstPage() {
             </form>
           </Col>
         </Row>
+        <ToastContainer autoClose={2000} />
       </Container>
       <style>{`
         .s2 {
