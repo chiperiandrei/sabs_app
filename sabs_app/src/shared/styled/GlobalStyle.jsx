@@ -14,6 +14,9 @@ export const Wrapper = styled.div`
   margin-top: 2em;
   font-size: 3.2vh;
   margin-bottom: 2em;
+  align-items:center;
+  font-family: monospace;
+  row-gap:2vh;
   #userName {
     font-weight: bold;
     color: black;

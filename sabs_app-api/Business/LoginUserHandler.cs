@@ -38,16 +38,22 @@ namespace sabs_app_api.Business
                 {
                     var tokenHandler = new JwtSecurityTokenHandler();
                     var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                    var ips = _context.IPs.Where(p => p.UserID == user.ID).Select(s => s.IPValue).ToList<string>();
+                    string ipuri = string.Join(",", ips);
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new Claim[]
                         {
-                    new Claim(ClaimTypes.Name, user.ID.ToString()),
+                    new Claim("id", user.ID.ToString()),
 
-                    new Claim(ClaimTypes.GivenName, user.FirstName.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email.ToString()),
-                    new Claim(ClaimTypes.MobilePhone, user.Phone.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
+                    new Claim("firstname", user.FirstName.ToString()),
+                    new Claim("lastname", user.LastName.ToString()),
+
+                    new Claim("email", user.Email.ToString()),
+                    new Claim("phone", user.Phone.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim("ips",ipuri) // not the best way, I will split in front end by comma
+
                         }),
                         Expires = DateTime.UtcNow.AddDays(7),
                         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -1,3 +1,4 @@
+import jwtDecode from "jwt-decode";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -14,7 +15,7 @@ function loadUserFromLocalStorage() {
     return undefined;
   }
 
-  return user;
+  return jwtDecode(user);
 }
 
 const user = loadUserFromLocalStorage();

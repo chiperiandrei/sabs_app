@@ -1,10 +1,9 @@
 import React from "react";
 
 export default function Footer(props) {
-  console.log(props);
   return (
     <div
-      className={props?.willBeFix ? "fixed-bottom" : "bottom"}
+      className={"fixed-bottom"}
       style={{ gridArea: "3 / 1 / 4 / 2 " }}
     >
       <div

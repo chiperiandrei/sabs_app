@@ -6,13 +6,12 @@ import DashboardAdmin from "./components/DashboardAdmin";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NotFound from "./components/NotFound";
-import SectionFirstPage from "./components/SectionFirstPage";
 
 function App() {
   const data = useSelector((state) => state.user_information);
-  const { token, firstname, lastname } = data
+  const { id } = data
     ? data
-    : { token: undefined, firstname: undefined, lastname: undefined };
+    : { id: undefined, firstname: undefined, lastname: undefined };
   return (
     <>
       <Header />
@@ -22,7 +21,7 @@ function App() {
 
         <Route exact path='*' component={NotFound} />
       </Switch>
-      <Footer willBeFix={token ? false : true} />
+      <Footer willBeFix={id ? false : true} />
     </>
   );
 }

@@ -1,24 +1,28 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../src/shared/css/Header.css";
 import { logInUser, logOutUser } from "../actions/userActions";
 import Logo from "./Logo";
-
 export default function Header() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const data = useSelector((state) => state.user_information);
-  const { token, firstname, lastname } = data
+  const { id, firstname, lastname } = data
     ? data
-    : { token: undefined, firstname: undefined, lastname: undefined };
+    : { id: undefined, firstname: undefined, lastname: undefined };
   const dispatch = useDispatch();
   const handleLogin = async (e) => {
     e.preventDefault();
     //login goes here
 
-    if (email && password) {
-      dispatch(logInUser({ email, password, token: "asda",firstname:"ADMIN FAKE" }));
-    }
+    axios
+      .post("https://localhost:5001/api/user/login", { email, password })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(logInUser(res.data.token));
+      })
+      .catch((err) => console.log(err.message));
   };
   const handleLogOut = (e) => {
     dispatch(logOutUser());
@@ -52,7 +56,7 @@ export default function Header() {
             </span>
           </div>
         </form>
-        {token !== undefined ? (
+        {id !== undefined ? (
           <div className="navbar-nav ml-auto">
             <a href="#" className="nav-item nav-link active">
               <i className="fa fa-home"></i>
