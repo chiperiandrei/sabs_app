@@ -24,13 +24,11 @@ export default function SectionFirstPage() {
     criteriaMode: "all",
   });
 
-  console.log(errors);
   const password = useRef({});
   password.current = watch("password", "");
 
   const onSubmit = ({ email, password, firstname, lastname, phone }, e) => {
     const register_data = { email, password, firstname, lastname, phone };
-    console.log(register_data);
     axios
       .post("https://localhost:5001/api/user/register", register_data)
       .then((res) => {
