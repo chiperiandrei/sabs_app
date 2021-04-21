@@ -15,7 +15,7 @@ namespace sabs_app_api.Infrastructure
         public DbSet<IPAdress> IPs { get; set; }
 
 
-        //public DbSet<PendingAdresses> PendingAdresses { get; set; }
+        public DbSet<PendingAdresses> PendingAdresses { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {

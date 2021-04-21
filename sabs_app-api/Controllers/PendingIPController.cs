@@ -12,20 +12,21 @@ namespace sabs_app_api.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class IPAdressController : ControllerBase
+    public class PendingIPController : ControllerBase
     {
 
 
         private readonly IMediator _mediator;
 
-        public IPAdressController(IMediator mediator)
+        public PendingIPController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [Authorize(Roles = Role.Admin)]
+
+        
         [HttpPost]
-        public async Task<ActionResult<IPAdress>> AddIp([FromBody] AddIPAdress request)
+        public async Task<ActionResult<AddPendingIPAdress>> AddPendingIp([FromBody] AddPendingIPAdress request)
         {
             var res = await _mediator.Send(request);
             if (res==null)
