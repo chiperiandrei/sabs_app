@@ -9,7 +9,7 @@ import "./index.css";
 import { rootReducer } from "./reducers/rootReducers";
 
 function loadUserFromLocalStorage() {
-  const user = JSON.parse(localStorage.getItem("user_info") || "{}");
+  const user = JSON.parse(localStorage.getItem("user_info"));
 
   if (user === null) {
     return undefined;

@@ -9,7 +9,7 @@ export default function DashboardAdmin() {
     <Wrapper>
       <WelcomeMessage>
         Welcome back,{" "}
-        <span id="userName"> {data.firstname ? data.firstname : null}</span>
+        <span id="userName"> {data?.firstname ? data?.firstname : null}</span>
       </WelcomeMessage>
       <ListUsersInTable />
     </Wrapper>

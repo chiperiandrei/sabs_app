@@ -8,7 +8,7 @@ const PrivateRouteAdminPanel = ({ component: Component, ...rest }) => {
         <Route {...rest} render={props => (
             isAdmin() ?
                 <DashboardAdmin {...props} />
-                : <Redirect to="/" />
+                : <Redirect to="/nowhere" />
         )} />
     );
 };

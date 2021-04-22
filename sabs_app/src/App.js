@@ -6,6 +6,7 @@ import DashboardAdmin from "./components/DashboardAdmin";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NotFound from "./components/NotFound";
+import PrivateRouteAdminPanel from "./components/PrivateRouteAdmin";
 
 function App() {
   const data = useSelector((state) => state.user_information);
@@ -16,7 +17,7 @@ function App() {
     <>
       <Header />
       <Switch>
-        <Route exact path="/admin" component={DashboardAdmin} />
+        <PrivateRouteAdminPanel exact path="/admin" component={DashboardAdmin} />
         <Route exact path="/" component={Dashboard} />
 
         <Route exact path='*' component={NotFound} />
