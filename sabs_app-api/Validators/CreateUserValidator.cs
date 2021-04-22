@@ -8,7 +8,8 @@ namespace sabs_app_api.Validators
     {
         public CreateUserValidator()
         {
-            RuleFor(x => x.Password).NotEmpty()
+            RuleFor(x => x.Password)
+                .NotEmpty()
                 .WithMessage("Password should not be empty")
                 .MinimumLength(6)
                 .WithMessage("Password should haave minimum 6 characters");
@@ -24,12 +25,12 @@ namespace sabs_app_api.Validators
                 .EmailAddress()
                 .WithMessage("Insert a valid email address");
             RuleFor(x => x.Phone).NotEmpty()
-                .WithMessage("Password should not be empty")
+                .WithMessage("Phone should not be empty")
                 .Length(10)
-                .WithMessage("Password should haave 10 characters")
+                .WithMessage("Phone should haave 10 characters")
 
                 .Must(BeAValidPhoneNumber)
-                .WithMessage("Password should haave 10 numbers");
+                .WithMessage("Phone should be a valid phone number");
 
 
         }
