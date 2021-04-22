@@ -36,8 +36,8 @@ export default function SectionFirstPage() {
         e.target.reset();
       })
       .catch((err) => {
-        console.log(err.message)
-        toast.error("Error during creating account...")
+        console.log(err.message);
+        toast.error("Error during creating account...");
       });
   };
   return (
@@ -86,6 +86,7 @@ export default function SectionFirstPage() {
                     name="phone"
                     type="text"
                     {...register("phone", {
+                      required: "Phone is required",
                       pattern: {
                         value: /[0-9]{10}$/,
                         message: "Phone should be format from 10 numbers", // JS only: <p>error message</p> TS only support string
@@ -102,6 +103,8 @@ export default function SectionFirstPage() {
                     name="email"
                     type="email"
                     {...register("email", {
+                      required: "Email is required",
+
                       pattern: {
                         value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
                         message: "invalid email adress",
@@ -120,8 +123,8 @@ export default function SectionFirstPage() {
                     {...register("password", {
                       required: "You must specify a password",
                       minLength: {
-                        value: 8,
-                        message: "Password must have at least 8 characters",
+                        value: 6,
+                        message: "Password must have at least 6 characters",
                       },
                     })}
                     label="Password"

@@ -1,11 +1,9 @@
 import React from "react";
+import { FooterStyle } from "../shared/styled/GlobalStyle";
 
 export default function Footer(props) {
   return (
-    <div
-      className={"fixed-bottom"}
-      style={{ gridArea: "3 / 1 / 4 / 2 " }}
-    >
+    <FooterStyle>
       <div
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
@@ -15,6 +13,6 @@ export default function Footer(props) {
           SABS_APP @ 2021
         </a>
       </div>
-    </div>
+    </FooterStyle>
   );
 }
