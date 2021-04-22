@@ -1,13 +1,9 @@
 ﻿using FluentValidation;
 using sabs_app_api.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace sabs_app_api.Validators
 {
-    public class LoginUserValidator:AbstractValidator<LoginUser>
+    public class LoginUserValidator : AbstractValidator<LoginUser>
     {
         public LoginUserValidator()
         {

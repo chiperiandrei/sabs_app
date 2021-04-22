@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace sabs_app_api.Models
 {
@@ -12,11 +8,8 @@ namespace sabs_app_api.Models
         public string IPValue { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-
-
         public Guid UserID { get; set; }
-        public User User{ get; set; }
-
+        public User User { get; set; }
 
         public IPAdress()
         {
@@ -25,7 +18,7 @@ namespace sabs_app_api.Models
             ModifiedDate = DateTime.UtcNow;
         }
 
-        public static IPAdress Create(User user,string ipadress)
+        public static IPAdress Create(User user, string ipadress)
         {
             return new IPAdress
             {
@@ -36,7 +29,5 @@ namespace sabs_app_api.Models
                 ModifiedDate = DateTime.UtcNow
             };
         }
-
-
     }
 }

@@ -7,8 +7,6 @@ namespace sabs_app_api.Models
         public Guid ID { get; set; }
         public string Email { get; set; }
         public string IpValue { get; set; }
-
-
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
 

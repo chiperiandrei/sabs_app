@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using sabs_app_api.DTOs;
 using sabs_app_api.Models;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace sabs_app_api.Controllers
@@ -14,8 +12,6 @@ namespace sabs_app_api.Controllers
     [ApiController]
     public class IPAdressController : ControllerBase
     {
-
-
         private readonly IMediator _mediator;
 
         public IPAdressController(IMediator mediator)
@@ -28,7 +24,7 @@ namespace sabs_app_api.Controllers
         public async Task<ActionResult<IPAdress>> AddIp([FromBody] AddIPAdress request)
         {
             var res = await _mediator.Send(request);
-            if (res==null)
+            if (res == null)
             {
 
                 return Conflict();

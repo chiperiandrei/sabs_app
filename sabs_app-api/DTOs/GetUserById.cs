@@ -6,11 +6,11 @@ namespace sabs_app_api.DTOs
 {
     public class GetUserById : IRequest<User>
     {
+        public Guid UserId { get; }
+
         public GetUserById(Guid id)
         {
             UserId = id;
         }
-
-        public Guid UserId { get; }
     }
 }

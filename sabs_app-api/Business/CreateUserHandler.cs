@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using sabs_app_api.Controllers;
 using sabs_app_api.DTOs;
 using sabs_app_api.Infrastructure;
 using sabs_app_api.Models;
@@ -20,7 +19,7 @@ namespace sabs_app_api.Business
         {
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
             User user = User.Create(request.FirstName,
-                request.LastName, request.Email, passwordHash,request.Phone);
+                request.LastName, request.Email, passwordHash, request.Phone);
             if (_context.Users.FirstOrDefault(u => u.Email == user.Email) == default(User))
             {
                 _context.Users.Add(user);

@@ -1,29 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using sabs_app_api.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace sabs_app_api.Infrastructure
 {
 
     public sealed class Context : DbContext
     {
-        public DbSet<User> Users    { get; set; }
-
+        public DbSet<User> Users { get; set; }
         public DbSet<IPAdress> IPs { get; set; }
-
-
         public DbSet<PendingAdresses> PendingAdresses { get; set; }
-
         public Context(DbContextOptions<Context> options) : base(options)
         {
             Database.EnsureCreated();
 
         }
 
-       
         public Context()
         {
             Database.EnsureCreated();
@@ -37,7 +28,7 @@ namespace sabs_app_api.Infrastructure
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+
         }
 
     }

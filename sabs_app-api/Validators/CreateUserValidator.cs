@@ -1,10 +1,6 @@
 ﻿using FluentValidation;
 using sabs_app_api.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace sabs_app_api.Validators
 {
@@ -31,7 +27,7 @@ namespace sabs_app_api.Validators
                 .WithMessage("Password should not be empty")
                 .Length(10)
                 .WithMessage("Password should haave 10 characters")
-            
+
                 .Must(BeAValidPhoneNumber)
                 .WithMessage("Password should haave 10 numbers");
 

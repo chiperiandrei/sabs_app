@@ -4,21 +4,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using sabs_app_api.Helpers;
 using sabs_app_api.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace sabs_app_api
 {
@@ -37,7 +30,8 @@ namespace sabs_app_api
         {
             services.AddDbContext<Context>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("Sabs_App_API")));
-            services.AddControllers().AddFluentValidation(fv=> {
+            services.AddControllers().AddFluentValidation(fv =>
+            {
                 fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                 fv.RegisterValidatorsFromAssemblyContaining<Startup>();
             }
@@ -50,7 +44,7 @@ namespace sabs_app_api
                         builder.AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowAnyOrigin();
-                   
+
                     });
             });
             services.AddMediatR(typeof(Startup).Assembly);

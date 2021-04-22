@@ -1,10 +1,6 @@
 ﻿using FluentValidation;
 using sabs_app_api.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace sabs_app_api.Validators
 {
@@ -22,7 +18,7 @@ namespace sabs_app_api.Validators
         {
             Regex ip = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
             MatchCollection result = ip.Matches(input);
-            return result.Count>0;
+            return result.Count > 0;
         }
     }
 }

@@ -35,7 +35,10 @@ export default function SectionFirstPage() {
         toast.success("Account successfully created!");
         e.target.reset();
       })
-      .catch((err) => toast.error(err.message));
+      .catch((err) => {
+        console.log(err.message)
+        toast.error("Error during creating account...")
+      });
   };
   return (
     <section className="s2">

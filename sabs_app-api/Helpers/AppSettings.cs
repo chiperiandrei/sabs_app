@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace sabs_app_api.Helpers
+﻿namespace sabs_app_api.Helpers
 {
     public class AppSettings
     {

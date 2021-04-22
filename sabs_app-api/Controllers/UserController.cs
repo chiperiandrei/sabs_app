@@ -14,10 +14,7 @@ namespace sabs_app_api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-
-
         private readonly IMediator _mediator;
-
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
@@ -25,7 +22,7 @@ namespace sabs_app_api.Controllers
 
         [Authorize(Roles = Role.Admin)]
         [HttpGet]
-        public async Task<ActionResult<List<UserDTO>>> GetUsers()
+        public async Task<ActionResult<List<UserResponse>>> GetUsers()
         {
             var users = await _mediator.Send(new GetUsers());
             if (users == null)
@@ -47,7 +44,6 @@ namespace sabs_app_api.Controllers
                 "Email already exists"
             );
         }
-
 
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(Guid id)
@@ -75,7 +71,7 @@ namespace sabs_app_api.Controllers
             var loginObj = await _mediator.Send(request);
             if (loginObj == null)
             {
-                return BadRequest("wrong email or password") ;
+                return BadRequest("wrong email or password");
             }
 
             return new ObjectResult(loginObj);
